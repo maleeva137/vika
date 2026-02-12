@@ -116,6 +116,7 @@ function updateTimer() {
 setInterval(updateTimer, 1000);
 
 
+// ОТКРЫТИЕ ВОСПОМИНАНИЙ - С УМЕНЬШЕННЫМ ПОСЛЕДНИМ ФОТО
 memoryItems.forEach((item, index) => {
     item.addEventListener('click', function(e) {
         e.stopPropagation();
@@ -126,12 +127,25 @@ memoryItems.forEach((item, index) => {
             modalPhoto.src = memories[memoryIndex].image;
 
             modalText.textContent = memories[memoryIndex].text;
+            
+
+
+            if (memoryIndex === 5) {
+                modalPhoto.style.maxHeight = '20vh';     
+                modalPhoto.style.maxWidth = '50%';       
+                modalPhoto.style.margin = '10px auto';   
+                modalPhoto.style.borderRadius = '16px';
+            } else {
+
+                modalPhoto.style.maxHeight = '40vh';
+                modalPhoto.style.maxWidth = '100%';
+                modalPhoto.style.margin = '0 auto 20px';
+                modalPhoto.style.border = 'none';
+            }
 
             modal.style.display = 'flex';
-            
 
             document.body.style.overflow = 'hidden';
-            
 
             setTimeout(() => {
                 modal.scrollTop = 0;
