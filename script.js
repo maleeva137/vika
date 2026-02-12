@@ -81,19 +81,29 @@ function createFloatingHearts() {
 }
 
 
+
 heartButton.addEventListener('click', function() {
     countdownContainer.style.display = 'flex';
     updateTimer();
     
-    const clickHint = document.getElementById('clickHint');
-    if (clickHint) {
-        clickHint.style.opacity = '0';
+
+    const clickHintLine1 = document.getElementById('clickHintLine1');
+    if (clickHintLine1) {
+        clickHintLine1.style.opacity = '0';
         setTimeout(() => {
-            clickHint.style.display = 'none';
+            clickHintLine1.style.display = 'none';
+        }, 300);
+    }
+    
+
+    const clickHintLine2 = document.getElementById('clickHintLine2');
+    if (clickHintLine2) {
+        clickHintLine2.style.opacity = '0';
+        setTimeout(() => {
+            clickHintLine2.style.display = 'none';
         }, 300);
     }
 });
-
 
 function updateTimer() {
     const now = new Date();
@@ -116,7 +126,7 @@ function updateTimer() {
 setInterval(updateTimer, 1000);
 
 
-// ОТКРЫТИЕ ВОСПОМИНАНИЙ - С УМЕНЬШЕННЫМ ПОСЛЕДНИМ ФОТО
+
 memoryItems.forEach((item, index) => {
     item.addEventListener('click', function(e) {
         e.stopPropagation();
