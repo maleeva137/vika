@@ -534,3 +534,77 @@ img,
         font-size: 1.6rem;
     }
 }
+
+
+
+
+.heart-button,
+.heart-button:focus,
+.heart-button:active,
+.heart-button:hover,
+.memory-item,
+.memory-item:focus,
+.memory-item:active,
+.modal-close,
+.modal-close:focus,
+.modal-close:active,
+.secret-close,
+.secret-close:focus,
+.secret-close:active,
+.click-hint-line1,
+.click-hint-line2 {
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+    background: transparent !important;
+}
+
+.heart-button::-moz-focus-inner,
+.memory-item::-moz-focus-inner,
+.modal-close::-moz-focus-inner,
+.secret-close::-moz-focus-inner {
+    border: 0 !important;
+}
+
+button,
+button:focus,
+button:active {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+}
+
+@supports (-webkit-touch-callout: none) {
+    .heart-button,
+    .heart-button:active,
+    .heart-button:focus,
+    .heart-button:hover {
+        -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+        background-color: transparent !important;
+        background: transparent !important;
+    }
+    
+    .heart-emoji-big {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+}
+
+
+.heart-button {
+    touch-action: manipulation !important;
+    -webkit-touch-callout: none !important;
+}
+
+
+button,
+.memory-item,
+.modal-close,
+.secret-close {
+    touch-action: manipulation;
+}
