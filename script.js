@@ -131,10 +131,10 @@ memoryItems.forEach((item, index) => {
 
 
             if (memoryIndex === 5) {
-                modalPhoto.style.maxHeight = '15vh';     
+                modalPhoto.style.maxHeight = '10vh';     
                 modalPhoto.style.maxWidth = '50%';       
                 modalPhoto.style.margin = '10px auto';   
-                modalPhoto.style.borderRadius = '16px';
+                modalPhoto.style.borderRadius = '8px';
             } else {
 
                 modalPhoto.style.maxHeight = '40vh';
