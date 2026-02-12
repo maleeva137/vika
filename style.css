@@ -441,3 +441,96 @@ img,
 .heart-emoji {
     pointer-events: none;
 }
+
+
+
+
+.secret-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    z-index: 200;
+    overflow: hidden;
+}
+
+.secret-content {
+    position: relative;
+    z-index: 210;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 30px;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+}
+
+.secret-message {
+    font-family: 'Caveat', 'Inter', cursive;
+    font-size: 2.2rem;
+    font-weight: 500;
+    color: #eb081b;
+    line-height: 1.5;
+    margin-bottom: 40px;
+    text-shadow: 0 0 10px rgba(235, 8, 27, 0.1);
+    white-space: pre-line;
+    animation: fadeInSecret 1s ease;
+}
+
+@keyframes fadeInSecret {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.secret-close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    color: #666;
+    cursor: pointer;
+    padding: 15px;
+    transition: color 0.2s;
+    line-height: 1;
+    z-index: 220;
+    min-width: 60px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto !important;
+}
+
+.secret-close:hover,
+.secret-close:active {
+    color: #ff3b4a;
+}
+
+
+@media (max-width: 480px) {
+    .secret-message {
+        font-size: 1.8rem;
+        padding: 20px;
+    }
+    
+    .secret-close {
+        top: 15px;
+        right: 20px;
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .secret-message {
+        font-size: 1.6rem;
+    }
+}
