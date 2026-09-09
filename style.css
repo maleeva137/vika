@@ -1,3 +1,6 @@
+:root {
+    --wind: 0px;
+}
 * {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -19,6 +22,84 @@ body {
     min-height: 100vh;
     position: relative;
     -webkit-overflow-scrolling: touch !important;
+}
+
+#falling-leaves {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.falling-leaf {
+    position: absolute;
+    user-select: none;
+    will-change: transform;
+    animation-name: fallingLeaf;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/* Падение листа */
+@keyframes fallingLeaf {
+    0% {
+        transform:
+            translate3d(0, -15vh, 0)
+            rotate(0deg);
+    }
+
+    20% {
+        transform:
+            translate3d(
+                calc(var(--wind) + var(--leaf-offset)),
+                20vh,
+                0
+            )
+            rotate(calc(var(--rotation) * 0.2));
+    }
+
+    40% {
+        transform:
+            translate3d(
+                calc(var(--wind) + var(--leaf-offset)),
+                40vh,
+                0
+            )
+            rotate(calc(var(--rotation) * 0.4));
+    }
+
+    60% {
+        transform:
+            translate3d(
+                calc(var(--wind) + var(--leaf-offset)),
+                60vh,
+                0
+            )
+            rotate(calc(var(--rotation) * 0.6));
+    }
+
+    80% {
+        transform:
+            translate3d(
+                calc(var(--wind) + var(--leaf-offset)),
+                80vh,
+                0
+            )
+            rotate(calc(var(--rotation) * 0.8));
+    }
+
+    100% {
+        transform:
+            translate3d(
+                calc(var(--wind) + var(--leaf-offset)),
+                115vh,
+                0
+            )
+            rotate(var(--rotation));
+    }
 }
 
 .floating-hearts {
@@ -287,7 +368,8 @@ body {
 
 
 .click-hint-line1,
-.click-hint-line2 {
+.click-hint-line2,
+.click-hint-line3 {
     font-size: 1.3rem;
     font-weight: 350;
     color: #000000;
@@ -313,7 +395,12 @@ body {
     margin-bottom: 20px;
     font-size: 1.2rem;
     letter-spacing: 5px;
-    color: #4a4a4a;
+    color: #080808;
+}
+.click-hint-line3 {
+    font-size: 0.9rem;
+    letter-spacing: 5px;
+    color: #575757;
 }
 
 @keyframes softPulse {
@@ -552,7 +639,8 @@ img,
 .secret-close:focus,
 .secret-close:active,
 .click-hint-line1,
-.click-hint-line2 {
+.click-hint-line2,
+.click-hint-line3 {
     -webkit-tap-highlight-color: transparent !important;
     -webkit-touch-callout: none !important;
     -webkit-user-select: none !important;
