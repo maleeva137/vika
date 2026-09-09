@@ -136,6 +136,96 @@ const secretMessages = [
     "всем привет сегодня 7 сентября 2026 года, это репортаж с места событий и я по прежнему люблю мою дивчинку викушку кукушку",
 ];
 
+function createFallingLeaves() {
+    const leavesContainer = document.createElement('div');
+    leavesContainer.id = 'falling-leaves';
+    document.body.appendChild(leavesContainer);
+
+    const leafEmojis = ['🍁', '🍂'];
+
+    // Создаём листья сразу
+    for (let i = 0; i < 17; i++) {
+        const leaf = document.createElement('div');
+        leaf.className = 'falling-leaf';
+
+        leaf.textContent =
+            leafEmojis[Math.floor(Math.random() * leafEmojis.length)];
+
+        // Распределяем листья по всей высоте экрана,
+        // чтобы они были видны сразу после входа
+        leaf.style.left = `${Math.random() * 110 - 5}%`;
+        leaf.style.top = `${Math.random() * 100}%`;
+
+        // Листья немного крупнее
+        const size = 1.1 + Math.random() * 1.1;
+        leaf.style.fontSize = `${size}rem`;
+
+        leaf.style.opacity = `${0.5 + Math.random() * 0.35}`;
+
+        // Скорость падения
+        const duration = 16 + Math.random() * 10;
+        leaf.style.animationDuration = `${duration}s`;
+
+        // Случайная фаза анимации,
+        // но БЕЗ задержки появления
+        leaf.style.animationDelay = `-${Math.random() * duration}s`;
+
+        // Индивидуальное вращение
+        leaf.style.setProperty(
+            '--rotation',
+            `${Math.random() * 720 - 360}deg`
+        );
+
+        // Небольшое индивидуальное отличие
+        leaf.style.setProperty(
+            '--leaf-offset',
+            `${Math.random() * 40 - 20}px`
+        );
+
+        leavesContainer.appendChild(leaf);
+    }
+}
+
+createFallingLeaves();
+
+let wind = 0;
+let windTarget = 90;
+
+// Постоянное плавное движение ветра
+function updateWind() {
+    // Очень медленно приближаемся к текущей силе ветра
+    wind += (windTarget - wind) * 0.003;
+
+    document.documentElement.style.setProperty(
+        '--wind',
+        `${wind}px`
+    );
+
+    requestAnimationFrame(updateWind);
+}
+
+// Плавно меняем направление ветра
+function changeWind() {
+    // Сначала ветер постепенно ослабевает
+    windTarget = 0;
+
+    // Через 3 секунды начинает плавно дуть в другую сторону
+    setTimeout(() => {
+        windTarget = Math.random() > 0.5 ? 90 : -90;
+    }, 3000);
+}
+
+// Первый ветер
+windTarget = 90;
+
+// Меняем направление примерно каждые 12–18 секунд
+setInterval(() => {
+    changeWind();
+}, 12000 + Math.random() * 6000);
+
+updateWind();
+
+createFallingLeaves();
 
 function createFloatingHearts() {
     for (let i = 0; i < 15; i++) {
@@ -260,6 +350,15 @@ heartButton.addEventListener('click', function() {
             clickHintLine2.style.display = 'none';
         }, 300);
     }
+
+    const clickHintLine3 = document.getElementById('clickHintLine3');
+    if (clickHintLine3) {
+        clickHintLine3.style.opacity = '0';
+        setTimeout(() => {
+            clickHintLine3.style.display = 'none';
+        }, 300);
+    }
+    
     
 
     heartClickCount++;
